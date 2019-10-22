@@ -14,6 +14,9 @@ module.exports = function(app) {
     app.route('/players/:playerId')
       .get(playersControl.list_single_player);
 
+    app.route('/players/games/:playerId')
+      .get(playersControl.list_player_games);
+
     app.route('/locations')
       .get(locationsControl.list_all_locations)
 

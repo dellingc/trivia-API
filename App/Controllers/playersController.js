@@ -25,3 +25,15 @@ exports.list_single_player = function(req, res){
         }
     });
 }
+
+exports.list_player_games = function(req, res){
+    Player.getPlayerGames(req.params.playerId, function(err, playerGames){
+        console.log(`list_player_games: ${req.params.playerId}`);
+        if(err){
+            res.send(err);
+        }
+        else{
+            res.send(playerGames);
+        }
+    });
+}
