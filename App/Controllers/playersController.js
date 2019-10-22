@@ -37,3 +37,16 @@ exports.list_player_games = function(req, res){
         }
     });
 }
+
+exports.add_new_player = function(req, res){
+    Player.addNewPlayer(req.params.fName, req.params.lName, function(err, player){
+        console.log(`add_new_player: ${req.params.fName} ${req.params.lName}`);
+        if(err){
+            res.send(err);
+        }
+        
+        else{
+            res.json(player)
+        }
+    })
+}

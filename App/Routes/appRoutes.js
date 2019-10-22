@@ -9,7 +9,8 @@ module.exports = function(app) {
       .get(gamesControl.list_all_games);
 
     app.route('/players')
-      .get(playersControl.list_all_players);
+      .get(playersControl.list_all_players)
+      .post(playersControl.add_new_player)
 
     app.route('/players/:playerId')
       .get(playersControl.list_single_player);
