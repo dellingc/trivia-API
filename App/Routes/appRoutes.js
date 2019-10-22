@@ -22,4 +22,7 @@ module.exports = function(app) {
 
     app.route('/locations/:locationId')
       .get(locationsControl.list_single_location)
+
+    app.route('/locations/games/:locationId')
+      .get(locationsControl.list_location_games)
 };

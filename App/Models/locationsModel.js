@@ -31,4 +31,16 @@ Location.getSingleLocation = function(locationId, result){
     })
 }
 
+Location.getLocationGames = function(locationId, result){
+    sql.query("SELECT TG.game_date, L.location_name, TG.place, TG.points FROM trivia_games TG JOIN locations L ON TG.location = L.location_id WHERE TG.location = ? ", locationId, function(err, res){
+        if(err){
+            console.log('ERROR: ', err);
+            result(err, null)
+        }
+        else{
+            result(null, res)
+        }
+    })
+}
+
 module.exports = Location;
