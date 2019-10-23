@@ -47,7 +47,7 @@ Player.getPlayerGames = function(playerId, result){
 
 //Add a new player
 Player.addNewPlayer = function(fName, lName, result){
-    sql.query("INSERT INTO players(first_name, last_name) VALUES(?,?)", [fName, lName], function(err, res){
+    sql.query("INSERT INTO players(first_name, last_name) VALUES(?, ?)", [fName, lName], function(err, res){
         if(err){
             console.log("ERROR: ", err)
             result(err, null);
@@ -57,5 +57,5 @@ Player.addNewPlayer = function(fName, lName, result){
         }
     }); 
 }
-'[-0o'm
--09=module.exports = Player;-
+
+module.exports = Player;
