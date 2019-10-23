@@ -39,8 +39,8 @@ exports.list_player_games = function(req, res){
 }
 
 exports.add_new_player = function(req, res){
-    Player.addNewPlayer(req.params.fName, req.params.lName, function(err, player){
-        console.log(`add_new_player: ${req.params.fName} ${req.params.lName}`);
+    Player.addNewPlayer(req.body.fName, req.body.lName, function(err, player){
+        console.log(`add_new_player: ${req.body.fName} ${req.body.lName}`);
         if(err){
             res.send(err);
         }
