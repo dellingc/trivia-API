@@ -37,3 +37,15 @@ exports.list_location_games = function(req, res){
         }
     });
 }
+
+exports.add_new_location = function(req, res){
+    Location.addNewLocation(req.body.locationName, function(err, location){
+        console.log(`add_new_location: ${req.body.locationName}`);
+        if(err){
+            res.send(err);
+        }
+        else{
+            res.send(location)
+        }
+    })
+}

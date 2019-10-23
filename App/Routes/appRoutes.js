@@ -25,6 +25,7 @@ module.exports = function(app) {
 
     app.route('/locations')
       .get(locationsControl.list_all_locations)
+      .post(locationsControl.add_new_location)
 
     app.route('/locations/:locationId')
       .get(locationsControl.list_single_location)

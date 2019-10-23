@@ -43,4 +43,16 @@ Location.getLocationGames = function(locationId, result){
     })
 }
 
+Location.addNewLocation = function(locationName, result){
+    sql.query("INSERT INTO locations (location_name) VALUES (?) ", locationName, function(err, res){
+        if(err){
+            console.log('ERROR: ', err);
+            result(err, null);
+        }
+        else{
+            result(null, err);
+        }
+    })
+}
+
 module.exports = Location;
