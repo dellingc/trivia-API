@@ -27,7 +27,7 @@ exports.list_single_game = function(req, res){
 }
 
 exports.make_new_game = function(req, res){
-    Game.makeNewGame(req.body.gameDate, req.body.location, req.body.teamName, req.body.points, req.body.place, function(err, game){
+    Game.makeNewGame(req.body.gameDate, req.body.location, req.body.teamName, req.body.place, req.body.points, function(err, game){
         console.log(`make_new_game: ${req.body.gameDate}`)
         if(err){
             res.send(err);

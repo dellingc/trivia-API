@@ -39,8 +39,8 @@ Game.getSingleGame = function(gameDate, result){
     })
 }
 
-Game.makeNewGame = function(date, location, teamName, points, place, result){
-    sql.query("INSERT INTO trivia_games (game_date, location, team_name, place, points) VALUES (?, ?, ?, ?, ?)", [date, location, teamName, points, place], function(err, res){
+Game.makeNewGame = function(date, location, teamName, place, points, result){
+    sql.query("INSERT INTO trivia_games (game_date, location, team_name, place, points) VALUES (?, ?, ?, ?, ?)", [date, location, teamName, place, points], function(err, res){
         if(err){
             console.log('ERROR: ', err);
             result(err, null);
