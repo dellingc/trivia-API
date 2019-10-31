@@ -10,7 +10,7 @@ let Game = function(game){
     this.points = game.points;
 }
 
-const getAllQuery = "select T.game_date, L.location_name, GROUP_CONCAT(P.first_name SEPARATOR ', ') as players, T.team_name, T.points, T.place from trivia_games T join locations L on T.location = L.location_id join game_players GP on T.game_date = GP.game_date join players P on GP.player_id = P.player_id group by T.game_date"
+const getAllQuery = "select T.game_date, L.location_name, GROUP_CONCAT(P.first_name SEPARATOR ', ') as players, T.team_name, T.points, T.place from trivia_games T join locations L on T.location = L.location_id join game_players GP on T.game_date = GP.game_date join players P on GP.player_id = P.player_id group by T.game_date ORDER BY T.game_date DESC"
 
 const getSingleQuery = "SELECT T.game_date, L.location_name, GROUP_CONCAT(P.first_name SEPARATOR ', ') AS players, T.team_name, T.points, T.place FROM trivia_games T JOIN locations L ON T.location = L.location_id JOIN game_players GP ON T.game_date = GP.game_date JOIN players P ON GP.player_id = P.player_id WHERE T.game_date = ? GROUP BY T.game_date"
 
