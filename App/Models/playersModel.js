@@ -34,7 +34,7 @@ Player.getSinglePlayer = function(playerId, result){
 
 //Get all games that a player was a part of
 Player.getPlayerGames = function(playerId, result){
-    sql.query("SELECT TG.game_date, L.location_name, TG.place, TG.points, P.first_name FROM trivia_games TG JOIN game_players GP ON TG.game_date = GP.game_date JOIN players P ON GP.player_id = P.player_id JOIN locations L ON TG.location = L.location_id WHERE P.player_id = ? ", playerId, function(err, res){
+    sql.query("SELECT TG.game_date, L.location_name, TG.place, TG.points, P.first_name FROM trivia_games TG JOIN game_players GP ON TG.game_date = GP.game_date JOIN players P ON GP.player_id = P.player_id JOIN locations L ON TG.location = L.location_id WHERE P.player_id = ? ORDER BY TG.game_date DESC", playerId, function(err, res){
         if(err){
             console.log("ERROR: ", err)
             result(err, null);
