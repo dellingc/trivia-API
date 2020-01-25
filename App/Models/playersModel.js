@@ -58,4 +58,25 @@ Player.addNewPlayer = function(fName, lName, result){
     }); 
 }
 
+Player.removePlayer = function(playerId, result) {
+    sql.query("SELECT first_name, last_name FROM players WHERE player_id = ?", playerId, function(err, res){
+        if(err){
+            console.log(`ERROR: ${err}`)
+        }
+        else {
+            let playerInfo = res
+        }
+    })
+    sql.query("SELECT first_name, last_name FROM players WHERE player_id = ?; DELETE FROM players where player_id = ?;", [playerId, playerId], function(err, res, playerInfo) {
+        if(err){
+            console.log('ERROR: ', err)
+            result(err, null)
+        } 
+        else {
+            console.log(res)
+            result(null, res[0])
+        }
+    })
+}
+
 module.exports = Player;

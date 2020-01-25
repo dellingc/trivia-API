@@ -19,6 +19,7 @@ module.exports = function(app) {
 
     app.route('/players/:playerId')
       .get(playersControl.list_single_player)
+      .delete(playersControl.remove_player)
 
     app.route('/players/games/:playerId')
       .get(playersControl.list_player_games)

@@ -28,7 +28,8 @@ var connection_pool = mysql.createPool({
     host : 'sql180.main-hosting.eu',
     user : 'u388170546_maxxtrivia',
     password : 'Maxxpower!',
-    database : 'u388170546_triviatracker'
+    database : 'u388170546_triviatracker',
+    multipleStatements: true
 });
 
 module.exports = connection_pool;

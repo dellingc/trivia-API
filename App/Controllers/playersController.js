@@ -50,3 +50,16 @@ exports.add_new_player = function(req, res){
         }
     })
 }
+
+exports.remove_player = function(req, res){
+    Player.removePlayer(req.params.playerId, function(err, player){
+        console.log(`remove_player: ${req.params.fName}`);
+        if(err){
+            res.send(err);
+        }
+
+        else{
+            res.send(`Player removed: ${player}`)
+        }
+    })
+}
