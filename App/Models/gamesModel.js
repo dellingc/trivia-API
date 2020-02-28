@@ -49,17 +49,31 @@ Game.makeNewGame = function(date, location, teamName, place, points, result){
             result(null, res);
         }
     })
-    // players.forEach(player => {
-    //     sql.query("INSERT INTO game_players (player_id, game_date) VALUES (?, ?)", [player, date], function(err, res){
-    //         if(err){
-    //             console.log('ERROR: ', err);
-    //             result(err, null);
-    //         }
-    //         else{
-    //             result(null, res)
-    //         }
-    //     })
-    // })
+}
+
+Game.deleteGame = function(date, result){
+    sql.query("DELETE FROM trivia_games WHERE game_date = ?", date, function(err, res){
+        if(err) {
+            console.log('ERROR: ', err);
+            result(err, null);
+        }
+        else{
+            result(null, res);
+        }
+    })
+}
+
+//updateGame not working
+Game.updateGame = function(location, teamName, place, points, date, result){
+    sql.query("UPDATE trivia_games SET location = ?, team_name = ?, place = ? WHERE game_date = ?", [location, teamName, place, points, date], function(err, res){
+        if(err){
+            console.log(`ERROR: ${err}`);
+            result(err, null);
+        }
+        else {
+            result(null, res)
+        }
+    })
 }
 
 module.exports = Game; 

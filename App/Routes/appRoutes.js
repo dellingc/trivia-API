@@ -9,9 +9,12 @@ module.exports = function(app) {
     app.route('/games')
       .get(gamesControl.list_all_games)
       .post(gamesControl.make_new_game)
+      
 
     app.route('/games/:gameDate')
       .get(gamesControl.list_single_game)
+      .post(gamesControl.update_game) //not working
+      .delete(gamesControl.delete_game) 
 
     app.route('/players')
       .get(playersControl.list_all_players)

@@ -37,3 +37,28 @@ exports.make_new_game = function(req, res){
         }
     })
 }
+
+exports.delete_game = function(req, res){
+    Game.deleteGame(req.params.gameDate, function(err, game){
+        console.log(`delete_game: ${req.params.gameDate}`);
+        if(err){
+            res.send(err);
+        }
+        else {
+            res.send(`Game removed: ${game}`);
+        }
+    })
+}
+
+ //update_game not working
+exports.update_game = function(req, res){
+    Game.updateGame(req.body.gameDate, req.body.location, req.body.teamName, req.body.place, req.body.points, function(err, game){
+        console.log(`update_game: ${req.body.gameDate}`);
+        if(err){
+            res.send(err);
+        }
+        else {
+            res.json(game);
+        }
+    })
+}
